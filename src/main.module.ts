@@ -5,6 +5,7 @@ import { AppController } from './app/app.controller';
 import { AppService } from './app/app.service';
 import { UserController } from './user/user.controller';
 import { EulaController } from './eula/eula.controller';
+import { FormOutputController } from './form-output/form-output.controller';
 
 
 /* tslint:disable:no-console */
@@ -18,7 +19,7 @@ console.info(
 
 @Module({
   imports: [MongooseModule.forRoot(Environment.MONGO_CONNECTOR)],
-  controllers: [AppController, UserController, EulaController],
+  controllers: [AppController, UserController, EulaController, FormOutputController],
   providers: [AppService],
 })
 export class MainModule {}
