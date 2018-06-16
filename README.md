@@ -14,7 +14,7 @@ Api desenvolvida em Nodejs utilizando o framework [Nest](https://docs.nestjs.com
 
 ## Documentação
 
-Dividida em duas partes:
+Dividida em partes:
 
-1) [Negócio](./docs/business/readme.md)
-2) [Implementação](./docs/code/readme.md)
+- [Negócio](./docs/business/readme.md)
+- [Implementação](./docs/code/readme.md)

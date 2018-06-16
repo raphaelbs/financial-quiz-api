@@ -2,13 +2,13 @@
 
 Este documento descreve a entidade do usuário.
 
-```yaml
-_id: ObjectId()                             # Id único do usuário.
-eula_accepted: boolean                      # Aceitou termo de licença.
-investment_profile: boolean                 # Respondeu questionário de investidor.
-investment_profile_ref: investment_profile  # FK para o questionário de investidor.
-```
+| Campo | Tipo | Descrição | Obrigatório | Padrão |
+| --- | --- | --- | --- | --- | --- |
+| _id | ObjectId | Id único | sim | - |
+| eula_accepted | boolean |  Aceitou termo de licença | sim | false |
+| investment_profile | boolean | Respondeu questionário de investidor | sim | false |
+| investment_profile_ref | [form_output](./form-output.md) | Resultados do questionário de investidor | não | - |
 
-## Referências
+---
 
-- [investment_profile](./investment-profile.md)
+[[← Página acima: Entidades]](./readme.md)
