@@ -1,6 +1,6 @@
 # Financial Quiz Api
 
-[![Build Status Travis](https://travis-ci.org/raphaelbs/financial-quiz-api.svg?branch=master)](https://travis-ci.org/raphaelbs/financial-quiz-api)
+[![Build Status Travis](https://travis-ci.org/raphaelbs/financial-quiz-api.svg?branch=develop)](https://travis-ci.org/raphaelbs/financial-quiz-api)
 [![Dependency Status](https://david-dm.org/raphaelbs/financial-quiz-api.svg)](https://david-dm.org/raphaelbs/financial-quiz-api)
 
 ## Acesse
