@@ -1,8 +1,9 @@
+import { FormInputType } from './../form-input-type/form-input-type';
 import * as mongoose from 'mongoose';
 
 export const FormInput = new mongoose.Schema({
   type: {
-    type: String,
+    type: FormInputType,
     required: true,
   },
   label: {
