@@ -3,18 +3,11 @@
 [![Build Status Travis](https://travis-ci.org/raphaelbs/financial-quiz-api.svg?branch=develop)](https://travis-ci.org/raphaelbs/financial-quiz-api)
 [![Dependency Status](https://david-dm.org/raphaelbs/financial-quiz-api.svg)](https://david-dm.org/raphaelbs/financial-quiz-api)
 
-## Acesse
+## Demo
 
-Heroku:
+Api publicada no `Heroku`:
 https://financial-quiz.herokuapp.com/
 
-## Descrição
+## Wiki
 
-Api desenvolvida em Nodejs utilizando o framework [Nest](https://docs.nestjs.com/).
-
-## Documentação
-
-Dividida em partes:
-
-- [Negócio](./docs/business/readme.md)
-- [Implementação](./docs/code/readme.md)
+[Acesse a wiki para mais detalhes](https://github.com/raphaelbs/financial-quiz-api/wiki)
