@@ -7,9 +7,7 @@ export const User = new mongoose.Schema({
     default: false,
   },
   investment_profile: {
-    type: Boolean,
-    required: true,
-    default: false,
+    type: Object,
+    required: false,
   },
-  investment_profile_ref: String,
 });
