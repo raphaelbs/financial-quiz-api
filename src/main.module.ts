@@ -8,6 +8,8 @@ import { EulaController } from './eula/eula.controller';
 import { FormOutputController } from './form-output/form-output.controller';
 import { FormInputController } from './form-input/form-input.controller';
 import { FormInputTypeController } from './form-input-type/form-input-type.controller';
+import { UserService } from './user/user.service';
+import { Mongoose } from './mongoose.def';
 
 /* tslint:disable:no-console */
 console.info(
@@ -19,7 +21,7 @@ console.info(
 /* tslint:enable:no-console */
 
 @Module({
-  imports: [MongooseModule.forRoot(Environment.MONGO_CONNECTOR)],
+  imports: [MongooseModule.forRoot(Environment.MONGO_CONNECTOR), ...Mongoose.features],
   controllers: [
     AppController,
     UserController,
@@ -28,6 +30,6 @@ console.info(
     FormInputController,
     FormInputTypeController,
   ],
-  providers: [AppService],
+  providers: [AppService, UserService],
 })
 export class MainModule {}
