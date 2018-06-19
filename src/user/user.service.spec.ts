@@ -4,9 +4,11 @@ import { IUser } from './user.interface';
 import { ObjectId } from 'bson';
 import 'jest';
 import { IUserDto } from './user.dto';
+import { getModelToken } from '@nestjs/mongoose';
 
 describe('UserService', () => {
   let service: UserService;
+
   const userMock = {
     _id: new ObjectId(),
   } as IUser;
@@ -17,7 +19,7 @@ describe('UserService', () => {
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [UserService, {
-        provide: 'UserModel',
+        provide: getModelToken('User'),
         useValue: userMock,
       }],
     }).compile();
