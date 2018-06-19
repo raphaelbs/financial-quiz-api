@@ -11,7 +11,6 @@ describe('User Controller', () => {
   beforeAll(async () => {
     module = await Test.createTestingModule({
       controllers: [UserController],
-      components: [UserService],
       providers: [UserService, {
         provide: 'UserModel',
         useValue: {
