@@ -2,9 +2,8 @@ import 'jest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { ObjectId } from 'bson';
-import { DocumentQuery } from 'mongoose';
 import { IUserDto } from './user.dto';
-import { MockModel } from '../db/mock.model';
+import { MockModel } from '../base/base.mock.model';
 import { IUser } from './user.interface';
 
 describe('UserService', () => {
@@ -36,7 +35,7 @@ describe('UserService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
     expect(service.create).toBeDefined();
-    expect(service.eulaAccept).toBeDefined();
+    expect(service.acceptEula).toBeDefined();
     expect(service.findAll).toBeDefined();
     expect(service.findById).toBeDefined();
   });

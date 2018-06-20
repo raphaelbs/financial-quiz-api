@@ -1,37 +1,19 @@
 import 'jest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
-import { ObjectId } from 'bson';
-import { IUser } from './user.interface';
 import { IUserDto } from './user.dto';
+import { UserMockService, UserMock } from './user.mock';
 
 describe('User Controller', () => {
   let module: TestingModule;
   let controller: UserController;
 
-  const iUser = { id: new ObjectId().toHexString() } as IUser;
-  const iUsers = [iUser];
-  const userDtoMock = { id: iUser.id } as IUserDto;
-
-  class UserService {
-    create(): Promise<IUser> {
-      return Promise.resolve(iUser);
-    }
-    findById(id: string): Promise<IUser> {
-      return Promise.resolve(iUsers.filter(u => u.id === id)[0]);
-    }
-    findAll(): Promise<IUser[]> {
-      return Promise.resolve(iUsers);
-    }
-    acceptEula(userDto: IUserDto): Promise<boolean> {
-      return Promise.resolve(userDto.eula_accepted);
-    }
-  }
+  const userMock = new UserMock();
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
       controllers: [UserController],
-      providers: [UserService],
+      providers: [UserMockService],
     }).compile();
     controller = module.get<UserController>(UserController);
   });
@@ -47,17 +29,29 @@ describe('User Controller', () => {
   it('should find all users', async () => {
     expect.assertions(1);
     const users = await controller.findAllUsers();
-    expect(users).toEqual(iUsers);
+    expect(users).toEqual(userMock.iUsers);
   });
 
   it('should find user by id', async () => {
     expect.assertions(2);
-    let user;
 
-    user = await controller.findById(iUser.id);
-    expect(user).toEqual(iUser);
+    const user = userMock.iUsers[0];
+    expect(await controller.findById(user.id)).toEqual(user);
 
-    user = await controller.findById(new Object().toString());
-    expect(user).toEqual(iUser);
+    expect(await controller.findById(new Object().toString())).toEqual(
+      undefined,
+    );
+  });
+
+  it('should accept eula', async () => {
+    expect.assertions(2);
+
+    const eulaNotAccepted = userMock.iUsers[1];
+    expect(
+      await controller.acceptEula(eulaNotAccepted as IUserDto),
+    ).toBeFalsy();
+
+    const eulaAccepted = userMock.iUsers[2];
+    expect(await controller.acceptEula(eulaAccepted as IUserDto)).toBeTruthy();
   });
 });

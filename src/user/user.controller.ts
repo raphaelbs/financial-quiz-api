@@ -41,6 +41,6 @@ export class UserController {
 
   @Put()
   async acceptEula(@Body() userDto: IUserDto): Promise<boolean> {
-    return this.userService.eulaAccept(userDto);
+    return this.userService.acceptEula(userDto);
   }
 }
