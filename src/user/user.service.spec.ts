@@ -7,18 +7,18 @@ import { IUserDto } from './user.dto';
 import { MockModel } from '../db/mock.model';
 import { IUser } from './user.interface';
 
-// Mocks ==============================================================
-
-const iUser = { id: new ObjectId() } as IUser;
-const iUsers = [iUser];
-const userDtoMock = { id: iUser.id.toHexString() } as IUserDto;
-
-class UserModel extends MockModel<IUser> {}
-
-// Testes =============================================================
-
 describe('UserService', () => {
   let service: UserService;
+
+  const iUser = { id: new ObjectId().toHexString() } as IUser;
+  const iUsers = [iUser];
+  const userDtoMock = { id: iUser.id } as IUserDto;
+
+  class UserModel extends MockModel<IUser> {
+    constructor() {
+      super(iUser);
+    }
+  }
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -35,11 +35,15 @@ describe('UserService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+    expect(service.create).toBeDefined();
+    expect(service.eulaAccept).toBeDefined();
+    expect(service.findAll).toBeDefined();
+    expect(service.findById).toBeDefined();
   });
 
   it('should create user', async () => {
     expect.assertions(1);
-    const user = await service.create(userDtoMock);
+    const user = await service.create();
     expect(user).toEqual(userDtoMock);
   });
 

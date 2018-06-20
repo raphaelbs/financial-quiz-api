@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const Eula = new mongoose.Schema({
+export const Eula = new Schema({
   label: {
     type: String,
     required: true,

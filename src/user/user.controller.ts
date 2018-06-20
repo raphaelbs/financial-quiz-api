@@ -1,4 +1,13 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Put,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { IUserDto } from './user.dto';
 import { IUser } from './user.interface';
@@ -7,6 +16,7 @@ import { IUser } from './user.interface';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  // Teste
   @Get('/all')
   async findAllUsers(): Promise<IUser[]> {
     return this.userService.findAll();
@@ -14,11 +24,23 @@ export class UserController {
 
   @Get('/id/:id')
   async findById(@Param('id') id): Promise<IUser> {
-    return this.userService.findById(id);
+    try {
+      return this.userService.findById(id);
+    } catch {
+      throw new HttpException(
+        { status: HttpStatus.NOT_FOUND, error: 'Usuário não encontrado' },
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   @Post()
-  async createUser(@Body() userDto: IUserDto): Promise<IUser> {
-    return this.userService.create(userDto);
+  async createUser(): Promise<IUser> {
+    return this.userService.create();
+  }
+
+  @Put()
+  async acceptEula(@Body() userDto: IUserDto): Promise<boolean> {
+    return this.userService.eulaAccept(userDto);
   }
 }
