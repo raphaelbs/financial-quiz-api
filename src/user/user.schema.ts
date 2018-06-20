@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const UserSchema = new mongoose.Schema({
+export const UserSchema = new Schema({
   eula_accepted: {
     type: Boolean,
     required: true,
