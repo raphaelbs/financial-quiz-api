@@ -1,11 +1,13 @@
-export class MockModel {
-  readonly document: any;
+import { DocumentQuery, Document } from 'mongoose';
 
-  constructor(document) {
+export abstract class MockModel<T extends Document> {
+  readonly document: T;
+
+  constructor(document: T) {
     this.document = document;
   }
 
-  save() {
+  public save() {
     return this.document;
   }
 }

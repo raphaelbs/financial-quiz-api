@@ -2,13 +2,23 @@ import 'jest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { ObjectId } from 'bson';
+import { DocumentQuery } from 'mongoose';
 import { IUserDto } from './user.dto';
 import { MockModel } from '../db/mock.model';
+import { IUser } from './user.interface';
+
+// Mocks ==============================================================
+
+const iUser = { id: new ObjectId() } as IUser;
+const iUsers = [iUser];
+const userDtoMock = { id: iUser.id.toHexString() } as IUserDto;
+
+class UserModel extends MockModel<IUser> {}
+
+// Testes =============================================================
 
 describe('UserService', () => {
   let service: UserService;
-
-  const userDtoMock = { id: new ObjectId().toHexString() } as IUserDto;
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -16,7 +26,7 @@ describe('UserService', () => {
         UserService,
         {
           provide: 'UserModel',
-          useValue: MockModel,
+          useValue: UserModel,
         },
       ],
     }).compile();
@@ -32,4 +42,10 @@ describe('UserService', () => {
     const user = await service.create(userDtoMock);
     expect(user).toEqual(userDtoMock);
   });
+
+  // it('should find all users', async () => {
+  //   expect.assertions(1);
+  //   const users = await service.findAll();
+  //   expect(users).toEqual(userDtoMock);
+  // });
 });
