@@ -10,6 +10,7 @@ import { FormInputController } from './form-input/form-input.controller';
 import { FormInputTypeController } from './form-input-type/form-input-type.controller';
 import { UserService } from './user/user.service';
 import { Mongoose } from './db/mongoose.def';
+import { EulaService } from './eula/eula.service';
 
 /* tslint:disable:no-console */
 console.info(
@@ -33,6 +34,6 @@ console.info(
     FormInputController,
     FormInputTypeController,
   ],
-  providers: [AppService, UserService],
+  providers: [AppService, UserService, EulaService],
 })
 export class MainModule {}
