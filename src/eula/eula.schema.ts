@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-export const Eula = new Schema({
+export const EulaSchema = new Schema({
   label: {
     type: String,
     required: true,
