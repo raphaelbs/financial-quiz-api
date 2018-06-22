@@ -12,7 +12,7 @@ export abstract class BaseService<T extends Document, K>
     return await this.model.findOne({ _id: new ObjectId(id) });
   }
   async create(dto: K): Promise<T> {
-    const createdUser = new this.model(dto);
-    return await createdUser.save();
+    const newModel = new this.model(dto);
+    return await newModel.save();
   }
 }
