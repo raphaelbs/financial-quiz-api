@@ -9,7 +9,7 @@ async function bootstrap() {
     cors({
       origin: [
         'http://localhost:4200',
-        'http://financial-quiz-app.s3-website-us-east-1.amazonaws.com/',
+        'http://financial-quiz-app.s3-website-us-east-1.amazonaws.com',
       ],
     }),
   );
