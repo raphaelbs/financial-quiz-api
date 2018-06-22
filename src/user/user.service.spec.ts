@@ -42,7 +42,7 @@ describe('UserService', () => {
 
   it('should create user', async () => {
     expect.assertions(1);
-    const user = await service.create();
+    const user = await service.create(userDtoMock);
     expect(user).toEqual(userDtoMock);
   });
 

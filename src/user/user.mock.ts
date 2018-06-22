@@ -17,7 +17,9 @@ export class UserMock {
 }
 
 export class UserMockService implements IBaseService<IUser, IUserDto> {
-  constructor(private userMock: UserMock) {}
+  constructor(private userMock: UserMock) {
+    this.userMock = userMock;
+  }
 
   create(): Promise<IUser> {
     return Promise.resolve(this.userMock.iUsers[0]);
