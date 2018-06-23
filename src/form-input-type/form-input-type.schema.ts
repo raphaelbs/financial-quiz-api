@@ -1,11 +1,11 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const FormInputType = new mongoose.Schema({
+export const FormInputType = new Schema({
   label: {
     type: String,
     required: true,
   },
-  eula: {
+  value: {
     type: String,
     required: true,
   },

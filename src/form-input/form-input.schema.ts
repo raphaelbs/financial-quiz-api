@@ -1,7 +1,7 @@
-import { FormInputType } from './../form-input-type/form-input-type';
-import * as mongoose from 'mongoose';
+import { FormInputType } from '../form-input-type/form-input-type.schema';
+import { Schema } from 'mongoose';
 
-export const FormInput = new mongoose.Schema({
+export const FormInput = new Schema({
   type: {
     type: FormInputType,
     required: true,
@@ -12,7 +12,7 @@ export const FormInput = new mongoose.Schema({
   },
   key: {
     type: String,
-    required: true,
+    required: false,
   },
   required: {
     type: Boolean,
