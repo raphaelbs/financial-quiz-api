@@ -9,7 +9,7 @@ export class FormOutputController extends BaseController<
   IFormOutput,
   IFormOutputDto
 > {
-  constructor(private formOutputService: FormOutputService) {
+  constructor(private readonly formOutputService: FormOutputService) {
     super(formOutputService);
   }
 }
