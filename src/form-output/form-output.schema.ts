@@ -1,18 +1,15 @@
 import { Schema } from 'mongoose';
 
-export const FormOutput = new Schema({
+export const FormOutputSchema = new Schema({
   question: {
     type: String,
     required: true,
   },
   answer: {
     type: String,
-    required: true,
+    required: false,
   },
-  children: [
-    {
-      type: this,
-      required: false,
-    },
-  ],
+});
+FormOutputSchema.add({
+  children: [{ type: FormOutputSchema, required: false }],
 });

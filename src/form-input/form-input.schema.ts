@@ -1,7 +1,7 @@
 import { FormInputType } from '../form-input-type/form-input-type.schema';
 import { Schema } from 'mongoose';
 
-export const FormInput = new Schema({
+export const FormInputSchema = new Schema({
   type: {
     type: FormInputType,
     required: true,
@@ -19,9 +19,11 @@ export const FormInput = new Schema({
     required: false,
     default: false,
   },
+});
+FormInputSchema.add({
   children: [
     {
-      type: this,
+      type: FormInputSchema,
       required: false,
     },
   ],

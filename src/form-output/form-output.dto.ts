@@ -1,8 +1,12 @@
 import { Document } from 'mongoose';
-import { IsString, IsArray } from 'class-validator';
+import { IsString, IsArray, IsEmpty } from 'class-validator';
 
 export class IFormOutputDto {
   @IsString() readonly question: string;
-  @IsString() answer?: string;
-  @IsArray() children?: IFormOutputDto[];
+  @IsString()
+  @IsEmpty()
+  readonly answer?: string;
+  @IsEmpty()
+  @IsArray()
+  readonly children?: IFormOutputDto[];
 }
