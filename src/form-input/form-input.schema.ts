@@ -1,18 +1,13 @@
-import { FormInputType } from '../form-input-type/form-input-type.schema';
 import { Schema } from 'mongoose';
 
 export const FormInputSchema = new Schema({
   type: {
-    type: FormInputType,
+    type: String,
     required: true,
   },
   label: {
     type: String,
     required: true,
-  },
-  key: {
-    type: String,
-    required: false,
   },
   required: {
     type: Boolean,
