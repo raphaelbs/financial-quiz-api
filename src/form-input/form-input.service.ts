@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseService } from 'base/base.service';
+import { BaseService } from '../base/base.service';
 import { IFormInput } from './form-input.interface';
 import { IFormInputDto } from './form-input.dto';
 import { Model } from 'mongoose';
